@@ -1,13 +1,13 @@
 ---
 order: 1
 nav:
-    title: 组件
-    path: /src
-    order: 2
+  title: 组件
+  path: /src
+  order: 2
 group:
-    title: 表单
-    path: /basic
-    order: 1
+  title: 表单
+  path: /basic
+  order: 1
 ---
 
 # FormConfig 表单配置

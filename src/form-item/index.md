@@ -1,13 +1,13 @@
 ---
 order: 1
 nav:
-    title: 组件
-    path: /src
-    order: 2
+  title: 组件
+  path: /src
+  order: 2
 group:
-    title: 表单
-    path: /basic
-    order: 1
+  title: 表单
+  path: /basic
+  order: 1
 ---
 
 # FormRender 表单组件
@@ -26,9 +26,9 @@ group:
 
 Form-render 中有三种主要的表单元素类型：item，object，list
 
-* item：即最基本的输入框，选择框等
-* object：一个包含其他元素的 block，可用于表单项的分类
-* list：可动态增减的表单项
+- item：即最基本的输入框，选择框等
+- object：一个包含其他元素的 block，可用于表单项的分类
+- list：可动态增减的表单项
 
 ```JavaScript {.line-numbers}
 // 一个基本的 scheme 结构

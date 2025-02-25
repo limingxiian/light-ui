@@ -16,13 +16,13 @@ export default defineConfig({
   outputPath: 'docs-dist',
   mode: 'site',
   resolve: {
-      includes: ['docs', 'src'],
+    includes: ['docs', 'src'],
   },
   base: '/business/light-ui',
   publicPath: '/business/light-ui/',
   antd: {},
   dva: {
-    hmr: true
+    hmr: true,
   },
   // 配置额外的 babel 插件。
   // https://umijs.org/zh-CN/config#extrababelplugins
@@ -33,7 +33,7 @@ export default defineConfig({
       'import',
       {
         libraryName: '@ant-design/icons',
-        customName: name => {
+        customName: (name) => {
           return `@ant-design/icons/lib/icons/${name}`;
         },
         camel2DashComponentName: false,
@@ -45,5 +45,5 @@ export default defineConfig({
       { libraryName: 'lodash', libraryDirectory: '', camel2DashComponentName: false },
       'lodash',
     ],
-  ]
+  ],
 });

@@ -20,7 +20,7 @@ const FormDesign = forwardRef((props, ref) => {
     <>
       <Generator ref={designerRef} defaultValue={defaultJson} />
     </>
-  )
-})
+  );
+});
 
-export default FormDesign
+export default FormDesign;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormItem } from "light-ui";
+import { FormItem } from 'light-ui';
 import { useForm } from 'form-render';
 import { Button } from 'antd';
 
@@ -39,17 +39,14 @@ const treeData = [
 const Demo = (props) => {
   const form = useForm();
   let formData = {
-    address: "baidua",
+    address: 'baidua',
     count: 60,
-    remark: "ceshiceshiceshissssss",
+    remark: 'ceshiceshiceshissssss',
     rows: 2,
     radio: 1,
     select: 1,
-    checkbox: [
-        2,
-        3
-    ],
-    treeSelect: 'leaf1'
+    checkbox: [2, 3],
+    treeSelect: 'leaf1',
   };
   const schema = {
     properties: {
@@ -61,12 +58,12 @@ const Demo = (props) => {
         required: true,
         placeholder: '尝试在此输入',
         itemprops: {
-          addonBefore: "https://",
-          addonAfter: ".com",
+          addonBefore: 'https://',
+          addonAfter: '.com',
         },
-        addonBefore: "https://",
-        addonAfter: ".com",
-        readOnlyWidget: "input",
+        addonBefore: 'https://',
+        addonAfter: '.com',
+        readOnlyWidget: 'input',
         rules: [
           {
             pattern: '^[A-Za-z0-9]+$',
@@ -98,7 +95,7 @@ const Demo = (props) => {
               label: '选项三',
               value: 3,
             },
-          ]
+          ],
         },
         required: true,
         width: '100%',
@@ -136,8 +133,8 @@ const Demo = (props) => {
               label: '选项三',
               value: 3,
             },
-          ]
-        }
+          ],
+        },
       },
       checkbox: {
         type: 'any',
@@ -156,9 +153,9 @@ const Demo = (props) => {
               label: '选项三',
               value: 3,
             },
-          ]
+          ],
         },
-        widget: 'CustomCheckBox'
+        widget: 'CustomCheckBox',
       },
       treeSelect: {
         type: 'any',
@@ -166,7 +163,7 @@ const Demo = (props) => {
         itemprops: {
           treeData,
         },
-        widget: 'treeSelect'
+        widget: 'treeSelect',
       },
       cascade: {
         type: 'any',
@@ -207,7 +204,7 @@ const Demo = (props) => {
             },
           ],
         },
-        widget: 'cascade'
+        widget: 'cascade',
       },
       pic: {
         type: 'any',
@@ -291,29 +288,29 @@ const Demo = (props) => {
         widget: 'rangePicker',
       },
     },
-  }
+  };
 
   const watch = {
-    address: val => {
+    address: (val) => {
       console.log('address:', val);
     },
-    select: val => {
-      form?.validateFields()
+    select: (val) => {
+      form?.validateFields();
     },
-    radio: val => {
+    radio: (val) => {
       console.log('radio:', val);
     },
-  }
+  };
 
   const onFinish = (data, errors) => {
     if (errors?.length > 0) return;
     formData = {
       ...formData,
       ...data,
-    }
+    };
     console.log('formData:', formData);
     console.log('errors:', errors);
-  }
+  };
   return (
     <>
       <FormItem form={form} formData={formData} item={schema} onFinish={onFinish} watch={watch} />
@@ -321,7 +318,7 @@ const Demo = (props) => {
         提交
       </Button>
     </>
-  )
-}
+  );
+};
 
-export default Demo
+export default Demo;

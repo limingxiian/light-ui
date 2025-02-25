@@ -1,13 +1,29 @@
 import React, { useRef, useState } from 'react';
-import { Button, Cascader, Checkbox, ConfigProvider, DatePicker, Input, InputNumber, Modal, Radio, Select, Space, TimePicker, TreeSelect, Upload, message } from 'antd';
+import {
+  Button,
+  Cascader,
+  Checkbox,
+  ConfigProvider,
+  DatePicker,
+  Input,
+  InputNumber,
+  Modal,
+  Radio,
+  Select,
+  Space,
+  TimePicker,
+  TreeSelect,
+  Upload,
+  message,
+} from 'antd';
 import { PlusOutlined, UploadOutlined } from '@ant-design/icons';
 import zhCN from 'antd/es/locale/zh_CN';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import FormRender from 'form-render';
-import { isEmpty } from "lodash";
+import { isEmpty } from 'lodash';
 import classNames from 'classnames';
-import FileType from "../utils/fileConfig.json";
+import FileType from '../utils/fileConfig.json';
 
 import './style';
 
@@ -35,7 +51,7 @@ function verticalFile(file, vertic) {
       message.error(`${error}请上传${_types}格式文件`);
       return Upload.LIST_IGNORE;
     }
-    
+
     if (maxSize > 0 && file.size > maxSize) {
       message.error(`${error}: 文件大小错误`);
       return Upload.LIST_IGNORE;
@@ -45,30 +61,24 @@ function verticalFile(file, vertic) {
 
 export const useRenderInput = (props) => {
   const { readOnly, value, itemprops = {}, ...rest } = props;
-  return <>
-    {
-      readOnly ? <div>{value}</div> : <Input
-        defaultValue={value}
-        {...itemprops}
-        {...rest}
-      />
-    }
-  </>
-}
+  return (
+    <>{readOnly ? <div>{value}</div> : <Input defaultValue={value} {...itemprops} {...rest} />}</>
+  );
+};
 
 export const useRenderNumber = (props) => {
   const { readOnly, value, itemprops = {}, ...rest } = props;
   const { style = {} } = itemprops;
-  return <>
-    {
-      readOnly ? <div>{value}</div> : <InputNumber
-        style={{ width: '100%', ...style }}
-        defaultValue={value}
-        {...rest}
-      />
-    }
-  </>
-}
+  return (
+    <>
+      {readOnly ? (
+        <div>{value}</div>
+      ) : (
+        <InputNumber style={{ width: '100%', ...style }} defaultValue={value} {...rest} />
+      )}
+    </>
+  );
+};
 
 export const useRenderTextArea = (props) => {
   const { readOnly, value, addons, itemprops = {}, ...rest } = props;
@@ -76,27 +86,27 @@ export const useRenderTextArea = (props) => {
   if (addons && addons.dependValues) {
     rows = addons.dependValues[0] || 2;
   }
-  return <>
-    {
-      readOnly ? <div>{value}</div> : <TextArea
-        defaultValue={value}
-        rows={rows}
-        {...itemprops}
-        {...rest}
-      />
-    }
-  </>
-}
+  return (
+    <>
+      {readOnly ? (
+        <div>{value}</div>
+      ) : (
+        <TextArea defaultValue={value} rows={rows} {...itemprops} {...rest} />
+      )}
+    </>
+  );
+};
 
 export const useRenderRadio = (props) => {
   const { itemprops = {}, value, ...rest } = props;
-  const { options = [], inline = 'inline', direction = 'horizontal', } = itemprops;
+  const { options = [], inline = 'inline', direction = 'horizontal' } = itemprops;
   const radioStyle = {
     display: inline,
     height: '30px',
     lineHeight: '30px',
   };
-  return <>
+  return (
+    <>
       <Radio.Group {...itemprops} {...rest} defaultValue={value}>
         <Space direction={direction}>
           {options?.length > 0 &&
@@ -107,14 +117,16 @@ export const useRenderRadio = (props) => {
             ))}
         </Space>
       </Radio.Group>
-  </>
-}
+    </>
+  );
+};
 
 export const useRenderCheckBox = (props) => {
   const { itemprops = {}, checked = [], value = [], ...rest } = props;
-  const { options = [], style = { width: '100%' }, direction = 'horizontal', } = itemprops;
-  return <>
-    <Checkbox.Group defaultValue={value || checked || []} {...itemprops} {...rest}>
+  const { options = [], style = { width: '100%' }, direction = 'horizontal' } = itemprops;
+  return (
+    <>
+      <Checkbox.Group defaultValue={value || checked || []} {...itemprops} {...rest}>
         <Space direction={direction}>
           {options?.length > 0 &&
             options.map((o, i) => (
@@ -123,56 +135,63 @@ export const useRenderCheckBox = (props) => {
               </Checkbox>
             ))}
         </Space>
-    </Checkbox.Group>
-  </>
-}
+      </Checkbox.Group>
+    </>
+  );
+};
 
 export const useRenderSelect = (props) => {
   const { itemprops = {}, value, ...rest } = props;
   const { options = [], style = {} } = itemprops;
-  return <>
-    <Select
-      style={{ width: '100%', ...style }}
-      defaultValue={value}
-      {...itemprops}
-      {...rest}
-      options={options}
-    />
-  </>
-}
+  return (
+    <>
+      <Select
+        style={{ width: '100%', ...style }}
+        defaultValue={value}
+        {...itemprops}
+        {...rest}
+        options={options}
+      />
+    </>
+  );
+};
 
 export const useRenderTreeSelect = (props) => {
   const { itemprops = {}, value, ...rest } = props;
   const { treeData = [], style = {} } = itemprops;
 
-  return <>
-    <TreeSelect
-      style={{ width: '100%', ...style }}
-      placeholder="请选择"
-      allowClear
-      treeDefaultExpandAll
-      defaultValue={value}
-      {...itemprops}
-      {...rest}
-      treeData={treeData}
-    />
-  </>
-}
+  return (
+    <>
+      <TreeSelect
+        style={{ width: '100%', ...style }}
+        placeholder="请选择"
+        allowClear
+        treeDefaultExpandAll
+        defaultValue={value}
+        {...itemprops}
+        {...rest}
+        treeData={treeData}
+      />
+    </>
+  );
+};
 
 export const useRenderCascade = (props) => {
   const { itemprops = {}, value, ...rest } = props;
   const { options = [], style = {} } = itemprops;
-  return <>
-    <Cascader
-      placeholder="请选择"
-      style={{ width: '100%', ...style }}
-      defaultValue={value}
-      {...itemprops}
-      {...rest}
-      options={options}
-    />
-  </>
-}
+  return (
+    <>
+      <Cascader
+        placeholder="请选择"
+        style={{ width: '100%', ...style }}
+        defaultValue={value}
+        {...itemprops}
+        {...rest}
+        options={options}
+      />
+    </>
+  );
+};
 
 export const useRenderImgUpload = (props) => {
   const { readOnly, itemprops = {}, value, ...rest } = props;
@@ -186,7 +205,7 @@ export const useRenderImgUpload = (props) => {
 
   let _accept =
     (type &&
-      type.map(val => {
+      type.map((val) => {
         return FileType[val];
       })) ||
     null;
@@ -212,7 +231,6 @@ export const useRenderImgUpload = (props) => {
     }
     setImgList(newFileList);
     handleChange && handleChange(newFileList);
-
   };
 
   const handleCancel = () => {
@@ -226,34 +244,36 @@ export const useRenderImgUpload = (props) => {
   } else {
     itemprops.className = '';
   }
-  return <div style={{ width: '100%' }}>
-    <Upload
-      ref={uploadImg}
-      listType="picture-card"
-      name='image'
-      action='https://www.mocky.io/v2/5cc8019d300000980a055e76'
-      beforeUpload={file => verticalFile(file, vertic)}
-      // headers={{}}
-      {...rest}
-      {...itemprops}
-      accept={vertic.accept}
-      onPreview={onPreview}
-      onChange={onChange}
-      fileList={imgList}
-    >
-      <PlusOutlined />
-      <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
-        <img
-          alt="example"
-          style={{
-            width: '100%',
-          }}
-          src={previewImage}
-        />
-      </Modal>
-    </Upload>
-  </div>
-}
+  return (
+    <div style={{ width: '100%' }}>
+      <Upload
+        ref={uploadImg}
+        listType="picture-card"
+        name="image"
+        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        beforeUpload={(file) => verticalFile(file, vertic)}
+        // headers={{}}
+        {...rest}
+        {...itemprops}
+        accept={vertic.accept}
+        onPreview={onPreview}
+        onChange={onChange}
+        fileList={imgList}
+      >
+        <PlusOutlined />
+        <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
+          <img
+            alt="example"
+            style={{
+              width: '100%',
+            }}
+            src={previewImage}
+          />
+        </Modal>
+      </Upload>
+    </div>
+  );
+};
 
 export const useRenderFileUpload = (props) => {
   const { readOnly, itemprops = {}, value, ...rest } = props;
@@ -263,7 +283,7 @@ export const useRenderFileUpload = (props) => {
 
   let _accept =
     (type &&
-      type.map(val => {
+      type.map((val) => {
         return FileType[val];
       })) ||
     null;
@@ -281,68 +301,63 @@ export const useRenderFileUpload = (props) => {
     setFileList(newFileList);
     handleChange && handleChange(newFileList);
   };
-  return <div style={{ width: '100%' }}>
-    <Upload
-      ref={uploadFile}
-      name='file'
-      listType="text"
-      action='https://www.mocky.io/v2/5cc8019d300000980a055e76'
-      beforeUpload={file => verticalFile(file, vertic)}
-      {...rest}
-      {...itemprops}
-      accept={vertic.accept}
-      onChange={onChange}
-      fileList={fileList}
-    >
-      {(maxLength && fileList.length >= maxLength) || readOnly ? null : <Button icon={<UploadOutlined />}>上传</Button>}
-    </Upload>
-  </div>
-}
+  return (
+    <div style={{ width: '100%' }}>
+      <Upload
+        ref={uploadFile}
+        name="file"
+        listType="text"
+        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        beforeUpload={(file) => verticalFile(file, vertic)}
+        {...rest}
+        {...itemprops}
+        accept={vertic.accept}
+        onChange={onChange}
+        fileList={fileList}
+      >
+        {(maxLength && fileList.length >= maxLength) || readOnly ? null : (
+          <Button icon={<UploadOutlined />}>上传</Button>
+        )}
+      </Upload>
+    </div>
+  );
+};
 
 export const useRenderDatePicker = (props) => {
   const { itemprops = {}, value, ...rest } = props;
   const { style = {} } = itemprops;
-  return <>
-    <DatePicker
-      style={{ width: '100%', ...style }}
-      {...rest}
-      {...itemprops}
-    />
-  </>
-}
+  return (
+    <>
+      <DatePicker style={{ width: '100%', ...style }} {...rest} {...itemprops} />
+    </>
+  );
+};
 
 export const useRenderRangePicker = function (props) {
   const { itemprops = {}, value, ...rest } = props;
   const { style = {} } = itemprops;
-  return <DatePicker.RangePicker
-    style={{ width: '100%', ...style }}
-    {...rest}
-    {...itemprops}
-  />;
+  return <DatePicker.RangePicker style={{ width: '100%', ...style }} {...rest} {...itemprops} />;
 };
 
 export const useRenderTimePicker = (props) => {
   const { itemprops = {}, value, ...rest } = props;
   const { style = {} } = itemprops;
-  return <TimePicker
-    style={{ width: '100%', ...style }}
-    {...rest}
-    {...itemprops}
-  />
-}
+  return <TimePicker style={{ width: '100%', ...style }} {...rest} {...itemprops} />;
+};
 
-const Item = props => {
+const Item = (props) => {
   const { item = {} } = props;
 
   if (props.formData && !isEmpty(props.formData) && item.properties && !isEmpty(item.properties)) {
-    Object.keys(item.properties)?.length && Object.keys(item.properties).map(key => {
-      item.properties[key].default = props.formData[key];
-    })
+    Object.keys(item.properties)?.length &&
+      Object.keys(item.properties).map((key) => {
+        item.properties[key].default = props.formData[key];
+      });
   }
   const schema = {
     type: 'object',
     ...item,
-  }
+  };
   const widgets = {
     input: useRenderInput, // 输入框
     number: useRenderNumber, // 数值
@@ -361,11 +376,7 @@ const Item = props => {
   };
   return (
     <ConfigProvider locale={zhCN}>
-      <FormRender
-        widgets={widgets}
-        schema={schema}
-        {...props}
-      />
+      <FormRender widgets={widgets} schema={schema} {...props} />
     </ConfigProvider>
   );
 };

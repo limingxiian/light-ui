@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { FormConfig, FormItem } from "light-ui";
+import { FormConfig, FormItem } from 'light-ui';
 import { Button, Modal, message } from 'antd';
 import { useForm } from 'form-render';
 
@@ -13,10 +13,10 @@ const schema = {
       required: true,
       placeholder: '尝试在此输入',
       itemprops: {
-        addonBefore: "https://",
-        addonAfter: ".com",
+        addonBefore: 'https://',
+        addonAfter: '.com',
       },
-      readOnlyWidget: "input",
+      readOnlyWidget: 'input',
       rules: [
         {
           pattern: '^[A-Za-z0-9]+$',
@@ -48,7 +48,7 @@ const schema = {
             label: '选项三',
             value: 3,
           },
-        ]
+        ],
       },
       required: true,
       width: '100%',
@@ -86,8 +86,8 @@ const schema = {
             label: '选项三',
             value: 3,
           },
-        ]
-      }
+        ],
+      },
     },
     checkbox: {
       type: 'any',
@@ -106,9 +106,9 @@ const schema = {
             label: '选项三',
             value: 3,
           },
-        ]
+        ],
       },
-      widget: 'CustomCheckBox'
+      widget: 'CustomCheckBox',
     },
     day: {
       type: 'any',
@@ -165,7 +165,7 @@ const schema = {
       widget: 'rangePicker',
     },
   },
-}
+};
 
 const Demo = (props) => {
   const [json, setJson] = useState(schema);
@@ -178,13 +178,13 @@ const Demo = (props) => {
     if (data?.getEditorInfo) {
       editorRef.current = data.getEditorInfo();
     }
-  }
+  };
 
-  const params = {}
+  const params = {};
 
   const handleCancel = () => {
     setOpen(false);
-  }
+  };
   const handleSave = () => {
     // editorRef.current.validate().then(errors => {
     //   if (!errors?.length) {
@@ -205,28 +205,33 @@ const Demo = (props) => {
     if (errors?.length > 0) {
       return message.warn('校验不通过！');
     }
-    setFormData({ ...formData, ...data, });
-  }
+    setFormData({ ...formData, ...data });
+  };
   return (
     <>
-      <Button onClick={() => {
-        setOpen(true);
-      }}>表单编辑</Button>
-      {open ? <Modal
-        open={open}
-        title="表单编辑"
-        okText="保存"
-        onOk={handleSave}
-        cancelText="取消"
-        onCancel={handleCancel}
+      <Button
+        onClick={() => {
+          setOpen(true);
+        }}
       >
-        <FormConfig json={json} jsonParams={params} getEditorInfo={getEditorInfo} />
-      </Modal> : null}
-
+        表单编辑
+      </Button>
+      {open ? (
+        <Modal
+          open={open}
+          title="表单编辑"
+          okText="保存"
+          onOk={handleSave}
+          cancelText="取消"
+          onCancel={handleCancel}
+        >
+          <FormConfig json={json} jsonParams={params} getEditorInfo={getEditorInfo} />
+        </Modal>
+      ) : null}
 
       <FormItem form={form} formData={formData} item={json} onFinish={onFinish} />
     </>
-  )
-}
+  );
+};
 
-export default Demo
+export default Demo;

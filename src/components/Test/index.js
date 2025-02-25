@@ -9,9 +9,7 @@
 import React from 'react';
 
 const Test = (props) => {
-  return (
-    <></>
-  )
-}
+  return <></>;
+};
 
-export default Test
+export default Test;
