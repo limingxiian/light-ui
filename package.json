@@ -1,12 +1,12 @@
 {
   "name": "light-ui-rc",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "start": "set NODE_OPTIONS=--openssl-legacy-provider && dumi dev",
     "docs:build": "set NODE_OPTIONS=--openssl-legacy-provider && dumi build",
     "compile": "gulp",
     "docs:deploy": "set NODE_OPTIONS=--openssl-legacy-provider && gh-pages -d docs-dist",
-    "build": "father build",
+    "build": "gulp",
     "deploy": "npm run docs:build && npm run docs:deploy",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
@@ -14,10 +14,9 @@
     "prepublishOnly": "npm run build"
   },
   "files": [
-    "dist"
+    "lib"
   ],
-  "module": "dist/esm/index.js",
-  "typings": "dist/esm/index.d.ts",
+  "module": "lib/index.js",
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
