@@ -2,10 +2,10 @@
   "name": "light-ui-rc",
   "version": "1.0.1",
   "scripts": {
-    "start": "dumi dev",
-    "docs:build": "dumi build",
+    "start": "set NODE_OPTIONS=--openssl-legacy-provider && dumi dev",
+    "docs:build": "set NODE_OPTIONS=--openssl-legacy-provider && dumi build",
     "compile": "gulp",
-    "docs:deploy": "gh-pages -d docs-dist",
+    "docs:deploy": "set NODE_OPTIONS=--openssl-legacy-provider && gh-pages -d docs-dist",
     "build": "father build",
     "deploy": "npm run docs:build && npm run docs:deploy",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
@@ -29,7 +29,9 @@
       "prettier --parser=typescript --write"
     ]
   },
-  "dependencies": {},
+  "dependencies": {
+    "jsdoc": "^4.0.4"
+  },
   "peerDependencies": {
     "react": ">=16.12.0",
     "react-dom": ">=16.12.0"
@@ -89,5 +91,12 @@
     "stylelint-order": "^3.0.0",
     "through2": "^4.0.2",
     "yorkie": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/limingxiian/light-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/limingxiian/light-ui/issues"
   }
 }
