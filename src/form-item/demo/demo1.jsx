@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormItem } from 'light-ui';
+import { FormItem } from 'light-ui-rc';
 import { useForm } from 'form-render';
 import { Button } from 'antd';
 

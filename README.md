@@ -1,4 +1,4 @@
-# light-ui
+# light-ui-rc
 
 ## Getting Started
 

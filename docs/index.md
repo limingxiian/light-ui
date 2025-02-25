@@ -1,6 +1,6 @@
 ---
 hero:
-  title: 'light-ui'
+  title: 'light-ui-rc'
   desc: 组件库
   actions:
     - text: 开始使用

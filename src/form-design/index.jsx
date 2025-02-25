@@ -2,7 +2,7 @@
  * @description: 表单设计器
  * @Date: 2024-05-09 11:30:28
  * @LastEditTime: 2024-05-09 17:59:37
- * @FilePath: /light-ui/src/form-design/index.jsx
+ * @FilePath: /light-ui-rc/src/form-design/index.jsx
  */
 import React, { forwardRef, useImperativeHandle, useRef } from 'react';
 import Generator from 'fr-generator';

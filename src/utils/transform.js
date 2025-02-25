@@ -3,7 +3,7 @@
  * @Date: 2024-04-28 17:21:59
  * @LastEditors: limingxian 305216313@qq.com
  * @LastEditTime: 2024-04-28 17:25:31
- * @FilePath: /light-ui/src/utils/transform.js
+ * @FilePath: /light-ui-rc/src/utils/transform.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 

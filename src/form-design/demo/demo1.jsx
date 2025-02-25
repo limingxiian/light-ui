@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { FormDesign, FormItem } from 'light-ui';
+import { FormDesign, FormItem } from 'light-ui-rc';
 import { Button, Modal } from 'antd';
 import { useForm } from 'form-render';
 import { isEmpty } from 'lodash';
